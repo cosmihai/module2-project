@@ -72,7 +72,7 @@ views
     layout.hbs
 
     partials
-      event-card.hbs
+      event-card-partial.hbs
 
 
 
