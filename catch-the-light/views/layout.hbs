@@ -1,10 +1,51 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>{{title}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <header id="site-header">
+    <div class=container>
+      <nav class="header-nav">
+        <a href="/">Home</a>
+      </nav>
+      <h1>Cath the light</h1>
+    </div>
+    <div class="container auth-buttons">
+      {{#unless user}}
+      <div>
+        <a href="/auth/login">
+          <button>Login</button>
+        </a>
+      </div>
+      <div>
+        <a href="/auth/signup">
+          <button>Signup</button>
+        </a>
+      </div>
+      {{/unless}} {{#if user}}
+      <div>
+        <a href="/auth/logout">
+          <button>Logout</button>
+        </a>
+      </div>
+      {{/if}}
+    </div>
+  </header>
+  <div class=container>
+
     {{{body}}}
-  </body>
+
+  </div>
+  <footer id="site-footer">
+    <div class=container>
+    </div>
+  </footer>
+</body>
+
 </html>
