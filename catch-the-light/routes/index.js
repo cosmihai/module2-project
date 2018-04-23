@@ -5,7 +5,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('pages/homepage', { title: 'Express' });
+  res.render('pages/homepage');
 });
 
 module.exports = router;

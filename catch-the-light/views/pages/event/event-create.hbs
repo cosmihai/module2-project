@@ -1,0 +1,80 @@
+<section>
+  <div class="hero-body">
+    <div class="container">
+      <h3 class="title has-text-dark">New event</h3>
+      <form method="POST" action="/">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Name</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded">
+                <input class="input" type="text" placeholder="Name" name="name">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Date</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-expanded">
+              <div class="field">
+                <p class="control is-expanded">
+                  <input class="input" type="date" placeholder="Date" name="date">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Description</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <textarea class="textarea" placeholder="Litle description about the event"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Location</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded">
+                <input class="input" type="text" placeholder="Longitud" name="longitud">
+              </p>
+            </div>
+            <div class="field">
+              <p class="control is-expanded">
+                <input class="input is-success" type="text" placeholder="Latitud" name="latitud">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <!-- Left empty for spacing -->
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <button type="submit" class="button is-block is-info">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

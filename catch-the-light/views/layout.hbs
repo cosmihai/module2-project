@@ -2,50 +2,62 @@
 <html lang="en">
 
 <head>
-  <title>{{title}}</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Homepage!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <!-- <link rel="stylesheet" href="mystyles.scss"> -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 </head>
 
 <body>
-  <header id="site-header">
-    <div class=container>
-      <nav class="header-nav">
-        <a href="/">Home</a>
-      </nav>
-      <h1>Cath the light</h1>
-    </div>
-    <div class="container auth-buttons">
-      {{#unless user}}
-      <div>
-        <a href="/auth/login">
-          <button>Login</button>
-        </a>
+
+  <header>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">Home</a>
       </div>
-      <div>
-        <a href="/auth/signup">
-          <button>Signup</button>
-        </a>
+      <div class="navbar-menu is-active">
+        {{#unless user}}
+        <div class="navbar-end">
+          <a class="button is-dark login" href="/auth/login">
+            <span>
+              Login
+            </span>
+          </a>
+          <a class="button is-dark signup" href="/auth/signup">
+            <span>Signup</span>
+          </a>
+        </div>
+        {{/unless}}
+        {{#if user}}
+        <div class="navbar-end">
+          <a class="button is-dark login" href="/auth/logout">
+            <span>
+              Logout
+            </span>
+          </a>
+          <a class="button is-dark signup" href="/user/:id">
+            <span>Profile</span>
+          </a>
+        </div>
+        {{/if}}
       </div>
-      {{/unless}} {{#if user}}
-      <div>
-        <a href="/auth/logout">
-          <button>Logout</button>
-        </a>
-      </div>
-      {{/if}}
-    </div>
+    </nav>
   </header>
-  <div class=container>
+
 
     {{{body}}}
 
-  </div>
-  <footer id="site-footer">
-    <div class=container>
+  <footer class="footer">
+    <div class="container is-fluid">
+      <div class="content has-text-centered">
+        <p>Footer typography color</p>
+      </div>
     </div>
   </footer>
+
 </body>
 
 </html>
