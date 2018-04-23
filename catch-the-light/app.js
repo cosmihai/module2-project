@@ -14,7 +14,7 @@ const MongoStore = require('connect-mongo')(session);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
-// const eventRouter = require('./routes/event');
+const eventRouter = require('./routes/event');
 
 const app = express();
 
@@ -60,7 +60,7 @@ hbs.registerPartials(path.join(__dirname, '/views/partials'));
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
-// app.use('/event', eventRouter);
+app.use('/event', eventRouter);
 
 // -- 404 and error handler
 
