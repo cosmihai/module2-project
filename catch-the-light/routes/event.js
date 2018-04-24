@@ -58,7 +58,7 @@ router.get('/:id', (req, res, next) => {
       }
       const data = {
         event: result,
-        deleteAuth: userEqualsCreator
+        buttonPermission: userEqualsCreator
       };
       res.render('pages/event/event-detail', data);
     })
@@ -81,7 +81,30 @@ router.post('/:id/delete', (req, res, next) => {
   }
 
   Event.findByIdAndRemove(eventId)
-    .then((result) => {
+    .then(() => {
+      res.redirect(`/users/${userId}`);
+    })
+    .catch(next);
+});
+
+router.post('/:id/join', (req, res, next) => {
+  if (!req.session.user) {
+    res.redirect('/auth/login');
+    return;
+  }
+
+  const userId = req.session.user._id;
+  const eventId = req.params.id;
+
+  // validate mongo id and send 404 if invalid
+  if (!mongoose.Types.ObjectId.isValid(eventId)) {
+    res.status(404);
+    res.render('not-found');
+    return;
+  }
+
+  Event.findByIdAndUpdate(eventId, {$addToSet: { attendants: userId }})
+    .then(() => {
       res.redirect(`/users/${userId}`);
     })
     .catch(next);

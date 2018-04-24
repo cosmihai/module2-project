@@ -29,24 +29,28 @@
       </div>
       <div class="column is-4">
         <div class="field is-grouped detail-btn container">
+          {{#unless buttonPermission}}
           <p class="control">
-            <a href="#" class="button is-danger">
-              Join
-            </a>
+            <form method="POST" action="{{event._id}}/join">
+              <button class="button is-danger">Join</button>
+            </form>
+          </p>
+          {{/unless}}
+          <p class="control">
+            <form method="POST" action="{{event._id}}/unjoin">
+              <button class="button is-danger">Unjoin</button>
+            </form>
           </p>
           <p class="control">
             <a href="#" class="button is-dark">
               Edit
             </a>
           </p>
-          {{#if deleteAuth}}
+          {{#if buttonPermission}}
           <p class="control">
             <form method="POST" action="{{event._id}}/delete">
               <button class="button is-dark">Delete</button>
             </form>
-            {{!-- <a href="/" class="button is-dark">
-              Delete
-            </a> --}}
           </p>
           {{/if}}
         </div>
