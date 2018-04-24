@@ -34,20 +34,6 @@ router.get('/:id', (req, res, next) => {
       res.render('pages/user/user', data);
     })
     .catch(next);
-
-  // User.findById(userId)
-  //   .then((result) => {
-  //     if (!result) {
-  //       res.status(404);
-  //       res.render('not-found');
-  //       return;
-  //     }
-  //     const data = {
-  //       user: result
-  //     };
-  //     res.render('pages/user/user', data);
-  //   })
-  //   .catch(next);
 });
 
 module.exports = router;

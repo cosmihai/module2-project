@@ -5,25 +5,25 @@
       <div class="column is-two-thirds content container">
         <p class="has-text-dark">
           <span class="title is-bold">
-            Event name
+            {{event.name}}
           </span>
           <!---->
         </p>
         <p class="subtitle">
-          Description:
+          Description: 
         </p>
         <p class="has-text-white">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+          {{event.description}}
         </p>
         <p class="subtitle">
           Date:
           <span class="has-text-white is-size-6">
-            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+            <time datetime="2016-1-1">{{event.date}}</time>
           </span>
         </p>
         <p>
           Created by
-          <a class="has-text-dark" href="#">Username</a>
+          <a class="has-text-dark" href="/users/{{event.owner._id}}">{{event.owner.username}}</a>
         </p>
 
       </div>

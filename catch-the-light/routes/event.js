@@ -33,4 +33,30 @@ router.post('/', (req, res, next) => {
     .catch(next);
 });
 
+router.get('/:id', (req, res, next) => {
+  if (!req.session.user) {
+    res.redirect('/auth/login');
+    return;
+  }
+
+  const eventId = req.params.id;
+
+  // validate mongo id and send 404 if invalid
+  if (!mongoose.Types.ObjectId.isValid(eventId)) {
+    res.status(404);
+    res.render('not-found');
+    return;
+  }
+
+  Event.findById(eventId)
+    .populate('owner')
+    .then((result) => {
+      const data = {
+        event: result
+      };
+      res.render('pages/event/event-detail', data);
+    })
+    .catch(next);
+});
+
 module.exports = router;
