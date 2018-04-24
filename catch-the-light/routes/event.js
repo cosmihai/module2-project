@@ -8,7 +8,11 @@ const User = require('../models/user');
 const Event = require('../models/event');
 
 router.get('/new', (req, res, next) => {
-  res.render('pages/event/event-create');
+  if (req.session.user) {
+    res.render('pages/event/event-create');
+  } else {
+    res.redirect('/auth/login');
+  }
 });
 
 router.post('/', (req, res, next) => {
