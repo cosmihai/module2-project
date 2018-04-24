@@ -20,20 +20,34 @@ router.get('/:id', (req, res, next) => {
     res.render('not-found');
     return;
   }
-  User.findById(userId)
-    .then((result) => {
-      console.log('bla');
-      if (!result) {
-        res.status(404);
-        res.render('not-found');
-        return;
-      }
-      const data = {
-        user: result
-      };
+  const promiseUser = User.findById(userId);
+  const promiseEventCreated = Event.find({owner: userId});
+  const promiseEventJoined = Event.find({attendants: {$in: [userId]}});
+
+  Promise.all([promiseUser, promiseEventCreated, promiseEventJoined])
+    .then((results) => {
+      const user = results[0];
+      const eventsCreated = results[1];
+      const eventsJoined = results[2];
+
+      const data = {user, eventsCreated, eventsJoined};
       res.render('pages/user/user', data);
     })
     .catch(next);
+
+  // User.findById(userId)
+  //   .then((result) => {
+  //     if (!result) {
+  //       res.status(404);
+  //       res.render('not-found');
+  //       return;
+  //     }
+  //     const data = {
+  //       user: result
+  //     };
+  //     res.render('pages/user/user', data);
+  //   })
+  //   .catch(next);
 });
 
 module.exports = router;
