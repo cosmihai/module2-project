@@ -39,11 +39,16 @@
               Edit
             </a>
           </p>
+          {{#if deleteAuth}}
           <p class="control">
-            <a href="#" class="button is-dark">
+            <form method="POST" action="{{event._id}}/delete">
+              <button class="button is-dark">Delete</button>
+            </form>
+            {{!-- <a href="/" class="button is-dark">
               Delete
-            </a>
+            </a> --}}
           </p>
+          {{/if}}
         </div>
       </div>
     </div>

@@ -51,10 +51,38 @@ router.get('/:id', (req, res, next) => {
   Event.findById(eventId)
     .populate('owner')
     .then((result) => {
+      const userId = req.session.user._id;
+      let userEqualsCreator = false;
+      if (userId == result.owner._id) {
+        userEqualsCreator = true;
+      }
       const data = {
-        event: result
+        event: result,
+        deleteAuth: userEqualsCreator
       };
       res.render('pages/event/event-detail', data);
+    })
+    .catch(next);
+});
+
+router.post('/:id/delete', (req, res, next) => {
+  if (!req.session.user) {
+    res.redirect('/auth/login');
+    return;
+  }
+  const userId = req.session.user._id;
+  const eventId = req.params.id;
+
+  // validate mongo id and send 404 if invalid
+  if (!mongoose.Types.ObjectId.isValid(eventId)) {
+    res.status(404);
+    res.render('not-found');
+    return;
+  }
+
+  Event.findByIdAndRemove(eventId)
+    .then((result) => {
+      res.redirect(`/users/${userId}`);
     })
     .catch(next);
 });
