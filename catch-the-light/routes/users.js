@@ -27,10 +27,10 @@ router.get('/:id', (req, res, next) => {
   Promise.all([promiseUser, promiseEventCreated, promiseEventJoined])
     .then((results) => {
       const user = results[0];
-      const eventsCreated = results[1];
-      const eventsJoined = results[2];
+      const eventCreated = results[1];
+      const eventJoined = results[2];
 
-      const data = {user, eventsCreated, eventsJoined};
+      const data = {user, eventCreated, eventJoined};
       res.render('pages/user/user', data);
     })
     .catch(next);

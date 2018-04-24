@@ -2,19 +2,24 @@
   <div class="card">
     <header class="card-header">
       <p class="card-header-title is-centered">
-        {{this.name}}
+        {{event.name}} 
       </p>
     </header>
     <div class="card-content">
       <div class="content">
-        {{!-- {{this.description}} --}}
+        {{!-- {{event.description}} --}}
         <p>
-          <time datetime="2016-1-1">{{this.date}}</time>
+          <time datetime="2016-1-1">{{event.date}}</time>
         </p>
       </div>
     </div>
     <footer class="card-footer">
-      <a href="#" class="card-footer-item">See more</a>
+      {{#unless user}}
+        <a href="/auth/login" class="card-footer-item">See more</a>   
+      {{/unless}}   
+      {{#if user}}
+        <a href="/user/{{event._id}}" class="card-footer-item">See more</a>
+      {{/if}}
     </footer>
   </div>
 </div>

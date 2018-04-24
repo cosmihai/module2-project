@@ -61,7 +61,7 @@
 <section class="container">
   <h3 class="title is-bold">My events</h3>
   <div class="columns is-multiline is-desktop">
-    {{#each eventsCreated}}
+    {{#each eventCreated}}
       {{> cardpartial this }}
     {{/each}}
     <div class="column is-4">
@@ -77,8 +77,8 @@
 <section class="container">
   <h3 class="title is-bold">Joined events </h3>
   <div class="columns is-multiline is-desktop">
-    {{#each eventsJoined}} 
-     {{> cardpartial this }} 
+    {{#each eventJoined}} 
+     {{> cardpartial event=this }} 
     {{/each}}    
   </div>
 </section>

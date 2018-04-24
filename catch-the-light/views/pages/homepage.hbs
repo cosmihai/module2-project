@@ -11,6 +11,8 @@
 
 <section class="container">
   <div class="columns is-multiline is-desktop">
-     {{> cardpartial }}
+    {{#each event}} 
+      {{> cardpartial event=this user=../user}}
+    {{/each}}
   </div>
 </section>
