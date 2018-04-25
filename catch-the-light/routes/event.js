@@ -74,6 +74,14 @@ router.get('/:id', (req, res, next) => {
     .catch(next);
 });
 
+router.get('/:id/json', (req, res, next) => {
+  Event.findById(req.params.id)
+    .then((results) => {
+      res.json(results);
+    })
+    .catch(next);
+});
+
 router.post('/:id/delete', (req, res, next) => {
   if (!req.session.user) {
     res.redirect('/auth/login');

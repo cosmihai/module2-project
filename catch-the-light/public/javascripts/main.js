@@ -43,6 +43,18 @@ function main () {
   };
 
   const map = new google.maps.Map(container, options);
+
+  axios.get(`${window.location.pathname}json`)
+    .then((response) => {
+      let eventPin = {
+        location: {
+          lat: response.data.location.coordinates[1],
+          lng: response.data.location.coordinates[0]
+        },
+        title: response.data.name
+      };
+      addMarker(map, eventPin.location, eventPin.title);
+    });
 }
 
 window.addEventListener('load', main);
