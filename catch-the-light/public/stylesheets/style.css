@@ -101,6 +101,10 @@ body {
   padding-top: 15px;
 }
 
+#map {
+  height: 300px;
+}
+
 
 
     /* background-color: #701E0B;
