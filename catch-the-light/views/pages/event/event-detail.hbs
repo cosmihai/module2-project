@@ -30,17 +30,20 @@
       <div class="column is-4">
         <div class="field is-grouped detail-btn container">
           {{#unless buttonPermission}}
-          <p class="control">
-            <form method="POST" action="{{event._id}}/join">
-              <button class="button is-danger">Join</button>
-            </form>
-          </p>
+            {{#if joinedEvent}}
+              <p class="control">
+                <form method="POST" action="{{event._id}}/unjoin">
+                  <button class="button is-danger">Unjoin</button>
+                </form>
+              </p>
+            {{else}}
+              <p class="control">
+                <form method="POST" action="{{event._id}}/join">
+                  <button class="button is-danger">Join</button>
+                </form>
+              </p>
+            {{/if}}             
           {{/unless}}
-          {{!-- <p class="control">
-            <form method="POST" action="{{event._id}}/unjoin">
-              <button class="button is-danger">Unjoin</button>
-            </form>
-          </p> --}}
           <p class="control">
             <a href="#" class="button is-dark">
               Edit
