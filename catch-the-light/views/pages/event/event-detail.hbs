@@ -10,7 +10,7 @@
           <!---->
         </p>
         <p class="subtitle">
-          Description: 
+          Description:
         </p>
         <p class="has-text-white">
           {{event.description}}
@@ -29,33 +29,33 @@
       </div>
       <div class="column is-4">
         <div class="field is-grouped detail-btn container">
-          {{#unless buttonPermission}}
-            {{#if joinedEvent}}
-              <p class="control">
-                <form method="POST" action="{{event._id}}/unjoin">
-                  <button class="button is-danger">Unjoin</button>
-                </form>
-              </p>
-            {{else}}
-              <p class="control">
-                <form method="POST" action="{{event._id}}/join">
-                  <button class="button is-danger">Join</button>
-                </form>
-              </p>
-            {{/if}}             
-          {{/unless}}
+          {{#if buttonPermission}}
           <p class="control">
             <a href="#" class="button is-dark">
               Edit
             </a>
           </p>
-          {{#if buttonPermission}}
           <p class="control">
             <form method="POST" action="{{event._id}}/delete">
               <button class="button is-dark">Delete</button>
             </form>
           </p>
+          {{else}} 
+            {{#if joinedEvent}}
+            <p class="control">
+              <form method="POST" action="{{event._id}}/unjoin">
+                <button class="button is-danger">Unjoin</button>
+              </form>
+            </p>
+            {{else}}
+            <p class="control">
+              <form method="POST" action="{{event._id}}/join">
+                <button class="button is-danger">Join</button>
+              </form>
+            </p>
+            {{/if}} 
           {{/if}}
+
         </div>
       </div>
     </div>

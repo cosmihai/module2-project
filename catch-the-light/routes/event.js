@@ -53,24 +53,17 @@ router.get('/:id', (req, res, next) => {
     .then((result) => {
       const userId = req.session.user._id;
       let userEqualsCreator = false;
-      if (result.owner._id.equals(result.owner._id)) {
+      if (result.owner._id.equals(userId)) {
         userEqualsCreator = true;
       }
       let joinedEvent = false;
 
-      for (let i = 0; i < result.attendants; i++) {
+      for (let i = 0; i < result.attendants.length; i++) {
         if (result.attendants[i].equals(userId)) {
           joinedEvent = true;
         }
       }
-      // let arrayAttendents = result.attendants;
-      // console.log(result.attendants);
-      // console.log('query ' + arrayAttendents.includes(userId));
-      // console.log(userId);
-      // if (result.attendants.includes(userId)) {
-      //
-      //   console.log('hello' + joinedEvent);
-      // }
+
       const data = {
         event: result,
         buttonPermission: userEqualsCreator,
@@ -120,6 +113,29 @@ router.post('/:id/join', (req, res, next) => {
   }
 
   Event.findByIdAndUpdate(eventId, {$addToSet: { attendants: userId }})
+    .then(() => {
+      res.redirect(`/users/${userId}`);
+    })
+    .catch(next);
+});
+
+router.post('/:id/unjoin', (req, res, next) => {
+  if (!req.session.user) {
+    res.redirect('/auth/login');
+    return;
+  }
+
+  const userId = req.session.user._id;
+  const eventId = req.params.id;
+
+  // validate mongo id and send 404 if invalid
+  if (!mongoose.Types.ObjectId.isValid(eventId)) {
+    res.status(404);
+    res.render('not-found');
+    return;
+  }
+
+  Event.findByIdAndUpdate(eventId, { $pull: { attendants: userId } })
     .then(() => {
       res.redirect(`/users/${userId}`);
     })
