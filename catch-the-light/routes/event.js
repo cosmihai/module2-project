@@ -53,18 +53,24 @@ router.get('/:id', (req, res, next) => {
     .then((result) => {
       const userId = req.session.user._id;
       let userEqualsCreator = false;
-      if (userId == result.owner._id) {
+      if (result.owner._id.equals(result.owner._id)) {
         userEqualsCreator = true;
       }
       let joinedEvent = false;
-      let arrayAttendents = result.attendants;
-      console.log(result.attendants);
-      console.log('query ' + arrayAttendents.includes(userId));
-      console.log(userId);
-      if (result.attendants.includes(userId)) {
-        joinedEvent = true;
-        console.log('hello' + joinedEvent);
+
+      for (let i = 0; i < result.attendants; i++) {
+        if (result.attendants[i].equals(userId)) {
+          joinedEvent = true;
+        }
       }
+      // let arrayAttendents = result.attendants;
+      // console.log(result.attendants);
+      // console.log('query ' + arrayAttendents.includes(userId));
+      // console.log(userId);
+      // if (result.attendants.includes(userId)) {
+      //
+      //   console.log('hello' + joinedEvent);
+      // }
       const data = {
         event: result,
         buttonPermission: userEqualsCreator,
