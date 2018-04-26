@@ -19,6 +19,7 @@ body {
 body {
   background-color: darkslategrey;
   color: white;
+  position: relative
 }
 
 h3{
@@ -27,16 +28,19 @@ h3{
 
 .bg{
   background-image: url("/images/orion.jpg");
-  /* height: 100vh; */
+  min-height: 80vh;
   width: 100%;
+  overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 100%;
+  padding-bottom: 80px;
 }
 
 .navbar {
   background-color:#701E0B;
-  color: whitesmoke
+  color: whitesmoke;
+  
 }
 
 .navbar-menu {
