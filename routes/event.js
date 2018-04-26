@@ -147,4 +147,49 @@ router.post('/:id/unjoin', (req, res, next) => {
     .catch(next);
 });
 
+router.get('/:id/update', (req, res, next) => {
+  if (!req.session.user) {
+    res.redirect('/auth/login');
+    return;
+  }
+  const eventId = req.params.id;
+
+  // validate mongo id and send 404 if invalid
+  if (!mongoose.Types.ObjectId.isValid(eventId)) {
+    next();
+    return;
+  }
+
+  Event.findById(eventId)
+    .then((result) => {
+      const data = {
+        event: result
+      };
+      res.render('pages/event/event-detail', data);
+    })
+    .catch(next);
+});
+
+router.post('/:id/update', (req, res, next) => {
+  if (!req.session.user) {
+    res.redirect('/auth/login');
+    return;
+  }
+
+  const userId = req.session.user._id;
+  const eventId = req.params.id;
+
+  // validate mongo id and send 404 if invalid
+  if (!mongoose.Types.ObjectId.isValid(eventId)) {
+    next();
+    return;
+  }
+
+  Event.findByIdAndUpdate(eventId, { $addToSet: { attendants: userId } })
+    .then(() => {
+      res.redirect(`/users/${userId}`);
+    })
+    .catch(next);
+});
+
 module.exports = router;
