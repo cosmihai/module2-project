@@ -67,6 +67,11 @@
           <div class="field-body">
             <div class="field">
               <div class="control">
+              </div>
+              {{#if errorMessage.length}}
+                <p class="subtitle is-4 text-shadow help is-danger">{{ errorMessage }}</p>
+              {{/if}}
+              </div>
                 <button type="submit" class="button is-block is-info">
                   Submit
                 </button>

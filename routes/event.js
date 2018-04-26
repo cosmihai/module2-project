@@ -11,26 +11,45 @@ const utils = new Utils();
 
 router.get('/new', (req, res, next) => {
   if (req.session.user) {
-    res.render('pages/event/event-create');
+    const data = { errorMessage: req.flash('create-error') };
+    res.render('pages/event/event-create', data);
   } else {
     res.redirect('/auth/login');
   }
 });
 
 router.post('/', (req, res, next) => {
-  const userId = req.session.user._id;
-  req.body.owner = userId;
+  const name = req.body.name;
+  const description = req.body.description;
+  const date = req.body.date;
+  const longitude = req.body.longitude;
+  const latitude = req.body.latitude;
+
+  // check if the form it's not empty
+  if (name === '' || description === '' || date === '' || longitude === '' || latitude === '') {
+    req.flash('create-error', 'You have to fill all the fields');
+    res.redirect('/event/new');
+    return;
+  }
+
+  const owner = req.session.user._id;
   const location = {
     type: 'Point',
     coordinates: [req.body.longitude, req.body.latitude]
   };
-  req.body.location = location;
-  // req.body.date = new Date(req.body.date);
 
-  const event = new Event(req.body);
+  const data = {
+    name,
+    description,
+    date,
+    owner,
+    location
+  };
+
+  const event = new Event(data);
   event.save()
     .then(() => {
-      res.redirect(`/users/${userId}`);
+      res.redirect(`/users/${event.owner}`);
     })
     .catch(next);
 });
@@ -68,7 +87,6 @@ router.get('/:id', (req, res, next) => {
         joinedEvent: joinedEvent
       };
       data.event.formattedDate = utils.formatDate(result.date);
-      console.log('*******' + data.event.formattedDate);
       res.render('pages/event/event-detail', data);
     })
     .catch(next);
