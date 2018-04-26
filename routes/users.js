@@ -16,8 +16,7 @@ router.get('/:id', (req, res, next) => {
   const userId = req.params.id;
   // validate mongo id and send 404 if invalid
   if (!mongoose.Types.ObjectId.isValid(userId)) {
-    res.status(404);
-    res.render('not-found');
+    next();
     return;
   }
   const promiseUser = User.findById(userId);
@@ -36,12 +35,12 @@ router.get('/:id', (req, res, next) => {
     .catch(next);
 });
 
-router.get('/user/edit', (req, res, next) => {
-  if (!req.session.user) {
-    return req.redirect('/auth/login');
-  }
+// router.get('/user/edit', (req, res, next) => {
+//   if (!req.session.user) {
+//     return req.redirect('/auth/login');
+//   }
 
-  res.render('pages/user/edituser');
-});
+//   res.render('pages/user/edituser');
+// });
 
 module.exports = router;

@@ -25,10 +25,10 @@ const eventSchema = new Schema({
     type: ObjectId,
     ref: 'User'
   },
-  attendants: {
-    type: [ObjectId],
+  attendants: [{
+    type: ObjectId,
     ref: 'User'
-  }
+  }]
 }, {
   timestamps: true
 });

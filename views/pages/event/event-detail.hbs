@@ -25,8 +25,14 @@
           Created by
           <a class="has-text-success" href="/users/{{event.owner._id}}">{{event.owner.username}}</a>
         </p>
-
+        <p class="subtitle has-text-light">Who is coming:</p>
+        <p>  
+          {{#each event.attendants}}
+          <a class="has-text-light" href="/users/{{this._id}}">{{this.username}}</a>, 
+          {{/each}}
+        </p>
       </div>
+
       <div class="column is-4">
         <div class="field is-grouped detail-btn container">
           {{#if buttonPermission}}
@@ -40,22 +46,19 @@
               <button class="button is-light">Delete</button>
             </form>
           </p>
-          {{else}} 
-            {{#if joinedEvent}}
-            <p class="control">
-              <form method="POST" action="{{event._id}}/unjoin">
-                <button class="button is-danger">Unjoin</button>
-              </form>
-            </p>
-            {{else}}
-            <p class="control">
-              <form method="POST" action="{{event._id}}/join">
-                <button class="button is-danger">Join</button>
-              </form>
-            </p>
-            {{/if}} 
-          {{/if}}
-
+          {{else}} {{#if joinedEvent}}
+          <p class="control">
+            <form method="POST" action="{{event._id}}/unjoin">
+              <button class="button is-danger">Unjoin</button>
+            </form>
+          </p>
+          {{else}}
+          <p class="control">
+            <form method="POST" action="{{event._id}}/join">
+              <button class="button is-danger">Join</button>
+            </form>
+          </p>
+          {{/if}} {{/if}}
         </div>
       </div>
     </div>

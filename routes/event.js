@@ -43,21 +43,17 @@ router.get('/:id', (req, res, next) => {
 
   // validate mongo id and send 404 if invalid
   if (!mongoose.Types.ObjectId.isValid(eventId)) {
-    res.status(404);
-    res.render('not-found');
+    next();
     return;
   }
 
   Event.findById(eventId)
+    .populate('attendants')
     .populate('owner')
     .then((result) => {
       const userId = req.session.user._id;
-      let userEqualsCreator = false;
-      if (result.owner._id.equals(userId)) {
-        userEqualsCreator = true;
-      }
+      let userEqualsCreator = result.owner._id.equals(userId);
       let joinedEvent = false;
-
       for (let i = 0; i < result.attendants.length; i++) {
         if (result.attendants[i].equals(userId)) {
           joinedEvent = true;
@@ -92,8 +88,7 @@ router.post('/:id/delete', (req, res, next) => {
 
   // validate mongo id and send 404 if invalid
   if (!mongoose.Types.ObjectId.isValid(eventId)) {
-    res.status(404);
-    res.render('not-found');
+    next();
     return;
   }
 
@@ -115,8 +110,7 @@ router.post('/:id/join', (req, res, next) => {
 
   // validate mongo id and send 404 if invalid
   if (!mongoose.Types.ObjectId.isValid(eventId)) {
-    res.status(404);
-    res.render('not-found');
+    next();
     return;
   }
 
@@ -138,8 +132,7 @@ router.post('/:id/unjoin', (req, res, next) => {
 
   // validate mongo id and send 404 if invalid
   if (!mongoose.Types.ObjectId.isValid(eventId)) {
-    res.status(404);
-    res.render('not-found');
+    next();
     return;
   }
 
