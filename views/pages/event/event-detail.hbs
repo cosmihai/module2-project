@@ -37,9 +37,9 @@
         <div class="field is-grouped detail-btn container">
           {{#if buttonPermission}}
           <p class="control">
-            {{!-- <a href="#" class="button is-light">
+            <a href="/event/{{event._id}}/update" class="button is-light">
               Edit
-            </a> --}}
+            </a>
           </p>
           <p class="control">
             <form method="POST" action="{{event._id}}/delete">

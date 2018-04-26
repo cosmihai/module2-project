@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container">
       <h3 class="title has-text-light">Edit event</h3>
-      <form method="POST" action="/event/:id/update">
+      <form method="POST" action="#{{!--/event/:id/update --}}">
         <div class="field is-horizontal">
           <div class="field-label is-normal">
             <label class="label has-text-light">Name</label>
@@ -24,7 +24,7 @@
             <div class="field is-expanded">
               <div class="field">
                 <p class="control is-expanded">
-                  <input class="input" type="date" placeholder="Date" name="date">
+                  <input class="input" type="date" placeholder="Date" name="date" value="{{event.date}}">
                 </p>
               </div>
             </div>
@@ -37,7 +37,7 @@
           <div class="field-body">
             <div class="field">
               <div class="control">
-                <textarea class="textarea" name="description" placeholder="Litle description about the event"></textarea>
+                <textarea class="textarea" name="description" placeholder="{{event.description}}" value="{{event.description}}"></textarea>
               </div>
             </div>
           </div>
@@ -49,12 +49,12 @@
           <div class="field-body">
             <div class="field">
               <p class="control is-expanded">
-                <input class="input" type="text" placeholder="Longitud" name="longitude">
+                <input class="input" type="text" placeholder="Longitud" name="longitude" value="{{event.coordinates.[0]}}">
               </p>
             </div>
             <div class="field">
               <p class="control is-expanded">
-                <input class="input is-success" type="text" placeholder="Latitude" name="latitude">
+                <input class="input is-success" type="text" placeholder="Latitude" name="latitude" value="{{event.coordinates.[1]}}">
               </p>
             </div>
           </div>
@@ -68,7 +68,7 @@
             <div class="field">
               <div class="control">
                 <button type="submit" class="button is-block is-info">
-                  Edit
+                  {{!-- Edit --}}Under construction
                 </button>
               </div>
             </div>

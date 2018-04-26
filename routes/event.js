@@ -25,7 +25,7 @@ router.post('/', (req, res, next) => {
   const longitude = req.body.longitude;
   const latitude = req.body.latitude;
 
-  // check if the form it's not empty
+  // check if the form is not empty
   if (name === '' || description === '' || date === '' || longitude === '' || latitude === '') {
     req.flash('create-error', 'You have to fill all the fields');
     res.redirect('/event/new');
@@ -183,7 +183,7 @@ router.get('/:id/update', (req, res, next) => {
       const data = {
         event: result
       };
-      res.render('pages/event/event-detail', data);
+      res.render('pages/event/event-edit', data);
     })
     .catch(next);
 });
@@ -203,8 +203,8 @@ router.post('/:id/update', (req, res, next) => {
     return;
   }
 
-  Event.findByIdAndUpdate(eventId, { $addToSet: { attendants: userId } })
-    .then(() => {
+  Event.findById(eventId)
+    .then((result) => {
       res.redirect(`/users/${userId}`);
     })
     .catch(next);
