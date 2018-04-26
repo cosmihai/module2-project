@@ -3,14 +3,14 @@
     <div class="is-hidden-mobile">
       <div class="columns is-mobile">
         <div class="column is-two-thirds content">
-          <p class="has-text-dark">
-            <span class="title is-bold">
+          <p class="">
+            <span class="title is-bold has-text-light">
               {{user.username}}
             </span>
             <!---->
           </p>
           <p>
-            <span class="subtitle">
+            <span class="subtitle has-text-light">
               <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.</small>
             </span>
           </p>
@@ -28,7 +28,7 @@
       <div>
         <div class="columns is-mobile">
           <div class="column is-two-thirds">
-            <h1 class="title is-bold">
+            <h1 class="title is-bold has-text-light">
               {{user.username}}
             </h1>
             <!---->
@@ -42,7 +42,7 @@
         <div class="columns">
           <div class="column">
             <p>
-              <span class="subtitle">
+              <span class="subtitle  has-text-light">
                 <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.</small>
               </span>
             </p>
@@ -52,14 +52,14 @@
     </div>
   </div>
   <div class="container edit-btn">
-    <a class="button is-dark" href="#">
+    <a class="button is-light" href="/users/user/edit">
       <span>Edit</span>
     </a>
   </div>
 </section>
 
 <section class="container">
-  <h3 class="title is-bold">My events</h3>
+  <h3 class="title is-bold has-text-light">My events</h3>
   <div class="columns is-multiline is-desktop">
     {{#each eventCreated}}
       {{> cardpartial event=this user=../user}}
@@ -75,7 +75,7 @@
 </section>
 
 <section class="container">
-  <h3 class="title is-bold">Joined events </h3>
+  <h3 class="title is-bold has-text-light">Joined events </h3>
   <div class="columns is-multiline is-desktop">
     {{#each eventJoined}} 
      {{> cardpartial event=this user=../user}} 

@@ -21,24 +21,24 @@
       <div class="navbar-menu is-active">
         {{#unless user}}
         <div class="navbar-end">
-          <a class="button is-dark login" href="/auth/login">
+          <a class="button is-light login" href="/auth/login">
             <span>
               Login
             </span>
           </a>
-          <a class="button is-dark signup" href="/auth/signup">
-            <span>Signup</span>
+          <a class="button is-light signup" href="/auth/signup">
+            <span class="has-text-dark">Signup</span>
           </a>
         </div>
         {{/unless}}
         {{#if user}}
         <div class="navbar-end">
-          <a class="button is-dark login" href="/auth/logout">
+          <a class="button is-light login" href="/auth/logout">
             <span>
               Logout
             </span>
           </a>
-          <a class="button is-dark signup" href="/users/{{user._id}}">
+          <a class="button is-light signup" href="/users/{{user._id}}">
             <span>Profile</span>
           </a>
         </div>
@@ -46,10 +46,11 @@
       </div>
     </nav>
   </header>
-
+  <div class="bg">
 
     {{{body}}}
-
+    
+  </div>
   <footer class="footer">
     <div class="container is-fluid">
       <div class="content has-text-centered">

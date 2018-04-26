@@ -36,4 +36,12 @@ router.get('/:id', (req, res, next) => {
     .catch(next);
 });
 
+router.get('/user/edit', (req, res, next) => {
+  if (!req.session.user) {
+    return req.redirect('/auth/login');
+  }
+
+  res.render('pages/user/edituser');
+});
+
 module.exports = router;

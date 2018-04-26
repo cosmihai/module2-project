@@ -17,7 +17,21 @@ body {
 /* ---- layout ---- */
 
 body {
-  background-color: teal;
+  background-color: darkslategrey;
+  color: white;
+}
+
+h3{
+  margin-bottom: 10px;
+}
+
+.bg{
+  background-image: url("/images/orion.jpg");
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 100%;
 }
 
 .navbar {
@@ -56,7 +70,7 @@ body {
 .footer {
   background-color:#701E0B;
   color: whitesmoke;
-  padding: 30px;
+  padding: 20px;
 }
 
 .profile-info {
@@ -67,6 +81,10 @@ body {
 .detail-info {
   margin-bottom: 10px;
   padding: 20px;
+}
+.box {
+  margin-bottom: 20px;
+  overflow: hidden;
 }
 
 /* ---- components ---- */
@@ -104,10 +122,3 @@ body {
 #map {
   height: 400px;
 }
-
-
-
-    /* background-color: #701E0B;
-    color: #AF3320;
-    color: #bf3319
-     */

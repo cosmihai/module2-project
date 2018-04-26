@@ -3,27 +3,27 @@
     <div class="columns">
       <div class="column is-1"></div>
       <div class="column is-two-thirds content container">
-        <p class="has-text-dark">
-          <span class="title is-bold">
+        <p>
+          <span class="title is-bold has-text-light">
             {{event.name}}
           </span>
           <!---->
         </p>
-        <p class="subtitle">
+        <p class="subtitle has-text-light">
           Description:
         </p>
-        <p class="has-text-white">
+        <p class="has-text-light">
           {{event.description}}
         </p>
-        <p class="subtitle">
+        <p class="subtitle has-text-light">
           Date:
-          <span class="has-text-white is-size-6">
+          <span class="has-text-light is-size-6">
             <time datetime="2016-1-1">{{event.date}}</time>
           </span>
         </p>
         <p>
           Created by
-          <a class="has-text-dark" href="/users/{{event.owner._id}}">{{event.owner.username}}</a>
+          <a class="has-text-success" href="/users/{{event.owner._id}}">{{event.owner.username}}</a>
         </p>
 
       </div>
@@ -31,13 +31,13 @@
         <div class="field is-grouped detail-btn container">
           {{#if buttonPermission}}
           <p class="control">
-            <a href="#" class="button is-dark">
+            <a href="#" class="button is-light">
               Edit
             </a>
           </p>
           <p class="control">
             <form method="POST" action="{{event._id}}/delete">
-              <button class="button is-dark">Delete</button>
+              <button class="button is-light">Delete</button>
             </form>
           </p>
           {{else}} 
