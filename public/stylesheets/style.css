@@ -107,6 +107,7 @@ h3{
 
 .card {
   margin: 5px;
+  background-color: rgba(193, 203, 204, .8)
 }
 
 .avatar img {
