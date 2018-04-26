@@ -7,7 +7,6 @@
   <title>Homepage!</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
-  <!-- <link rel="stylesheet" href="mystyles.scss"> -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 </head>
 
@@ -19,18 +18,6 @@
         <a class="navbar-item" href="/">Home</a>
       </div>
       <div class="navbar-menu is-active">
-        {{#unless user}}
-        <div class="navbar-end">
-          <a class="button is-light login" href="/auth/login">
-            <span>
-              Login
-            </span>
-          </a>
-          <a class="button is-light signup" href="/auth/signup">
-            <span class="has-text-dark">Signup</span>
-          </a>
-        </div>
-        {{/unless}}
         {{#if user}}
         <div class="navbar-end">
           <a class="button is-light login" href="/auth/logout">
@@ -42,6 +29,17 @@
             <span>Profile</span>
           </a>
         </div>
+        {{else}}
+        <div class="navbar-end">
+          <a class="button is-light login" href="/auth/login">
+            <span>
+              Login
+            </span>
+          </a>
+          <a class="button is-light signup" href="/auth/signup">
+            <span class="has-text-dark">Signup</span>
+          </a>
+        </div>
         {{/if}}
       </div>
     </nav>
@@ -49,12 +47,12 @@
   <div class="bg">
 
     {{{body}}}
-    
+
   </div>
   <footer class="footer">
     <div class="container is-fluid">
-      <div class="content has-text-centered">
-        <p>Footer typography color</p>
+      <div class="content">
+        <p>&copy Mihai & Míriam </p>
       </div>
     </div>
   </footer>
