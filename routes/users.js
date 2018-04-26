@@ -6,6 +6,9 @@ const router = express.Router();
 
 const User = require('../models/user');
 const Event = require('../models/event');
+const Utils = require('../utils');
+
+const utils = new Utils();
 
 /* GET user profile. */
 
@@ -26,10 +29,19 @@ router.get('/:id', (req, res, next) => {
   Promise.all([promiseUser, promiseEventCreated, promiseEventJoined])
     .then((results) => {
       const user = results[0];
-      const eventCreated = results[1];
-      const eventJoined = results[2];
+      const eventsCreated = results[1];
+      const eventsJoined = results[2];
+      // eventCreated.date = moment(eventCreated.date).format();
 
-      const data = {user, eventCreated, eventJoined};
+      const data = {user, eventsCreated, eventsJoined};
+
+      for (let i = 0; i < data.eventsCreated.length; i++) {
+        data.eventsCreated[i].formattedDate = utils.formatDate(results[1][i].date);
+      }
+
+      for (let i = 0; i < data.eventsJoined.length; i++) {
+        data.eventsJoined[i].formattedDate = utils.formatDate(results[1][i].date);
+      }
       res.render('pages/user/user', data);
     })
     .catch(next);

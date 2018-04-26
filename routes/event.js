@@ -4,8 +4,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 
-const User = require('../models/user');
 const Event = require('../models/event');
+const Utils = require('../utils');
+
+const utils = new Utils();
 
 router.get('/new', (req, res, next) => {
   if (req.session.user) {
@@ -65,6 +67,8 @@ router.get('/:id', (req, res, next) => {
         buttonPermission: userEqualsCreator,
         joinedEvent: joinedEvent
       };
+      data.event.formattedDate = utils.formatDate(result.date);
+      console.log('*******' + data.event.formattedDate);
       res.render('pages/event/event-detail', data);
     })
     .catch(next);
