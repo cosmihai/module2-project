@@ -4,31 +4,31 @@
       <div class="column is-1"></div>
       <div class="column is-two-thirds content container">
         <p>
-          <span class="title is-bold has-text-light">
+          <span class="text-shadow title is-2 is-bold has-text-grey-lighter">
             {{event.name}}
           </span>
           <!---->
         </p>
-        <p class="subtitle has-text-light">
+        <p class="text-shadow subtitle is-3 has-text-grey-lighter">
           Description:
         </p>
-        <p class="has-text-light">
+        <p class="text-shadow subtitle is-5 has-text-grey-lighter">
           {{event.description}}
         </p>
-        <p class="subtitle has-text-light">
+        <p class="text-shadow subtitle has-text-grey-lighter">
           Date:
-          <span class="has-text-light is-size-6">
+          <span class="has-text-grey-lighter is-size-6">
             <time datetime="2016-1-1">{{event.date}}</time>
           </span>
         </p>
         <p>
           Created by
-          <a class="has-text-success" href="/users/{{event.owner._id}}">{{event.owner.username}}</a>
+          <a class="text-shadow has-text-success" href="/users/{{event.owner._id}}">{{event.owner.username}}</a>
         </p>
-        <p class="subtitle has-text-light">Who is coming:</p>
+        <p class="text-shadow subtitle has-text-grey-lighter">Who is coming:</p>
         <p>  
           {{#each event.attendants}}
-          <a class="has-text-light" href="/users/{{this._id}}">{{this.username}}</a>, 
+          <a class="has-text-grey-lighter" href="/users/{{this._id}}">{{this.username}}</a>, 
           {{/each}}
         </p>
       </div>
@@ -37,9 +37,9 @@
         <div class="field is-grouped detail-btn container">
           {{#if buttonPermission}}
           <p class="control">
-            <a href="#" class="button is-light">
+            {{!-- <a href="#" class="button is-light">
               Edit
-            </a>
+            </a> --}}
           </p>
           <p class="control">
             <form method="POST" action="{{event._id}}/delete">

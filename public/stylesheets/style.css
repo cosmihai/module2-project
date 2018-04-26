@@ -123,6 +123,12 @@ h3{
   margin-bottom: 8px;
   padding-top: 15px;
 }
+.text-shadow {
+  text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+} 
+.grey-background {
+  background-color: rgba(193, 203, 204, .6)  
+}  
 
 #map {
   height: 400px;
