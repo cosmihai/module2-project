@@ -9,28 +9,30 @@
           </span>
           <!---->
         </p>
-        <p class="text-shadow subtitle is-3 has-text-grey-lighter">
-          Description:
-        </p>
-        <p class="text-shadow subtitle is-5 has-text-grey-lighter">
-          {{event.description}}
-        </p>
-        <p class="text-shadow subtitle has-text-grey-lighter">
-          Date:
-          <span class="has-text-grey-lighter is-size-6">
-            <time datetime="2016-1-1">{{event.formattedDate}}</time>
-          </span>
-        </p>
-        <p class="text-shadow is-5">
-          Created by
-          <a class="has-text-success" href="/users/{{event.owner._id}}">{{event.owner.username}}</a>
-        </p>
-        <p class="text-shadow subtitle has-text-grey-lighter">Who is coming:</p>
-        <p>  
-          {{#each event.attendants}}
-          <a class="has-text-grey-lighter" href="/users/{{this._id}}">{{this.username}}</a>, 
-          {{/each}}
-        </p>
+        <div class="dark-background">
+          <p class="text-shadow subtitle is-3 has-text-grey-lighter">
+            Description:
+          </p>
+          <p class="text-shadow subtitle is-5 has-text-grey-lighter">
+            {{event.description}}
+          </p>
+          <p class="text-shadow subtitle has-text-grey-lighter">
+            Date:
+            <span class="has-text-grey-lighter is-size-6">
+              <time datetime="2016-1-1">{{event.formattedDate}}</time>
+            </span>
+          </p>
+          <p class="text-shadow is-5">
+            Created by
+            <a class="has-text-success" href="/users/{{event.owner._id}}">{{event.owner.username}}</a>
+          </p>
+          <p class="text-shadow subtitle has-text-grey-lighter">Who is coming:</p>
+          <p>
+            {{#each event.attendants}}
+            <a class="has-text-grey-lighter" href="/users/{{this._id}}">{{this.username}}</a>,
+            {{/each}}
+          </p>
+        </div>
       </div>
 
       <div class="column is-4">
