@@ -2,9 +2,6 @@
 const moment = require('moment');
 
 class Utils {
-  // constructor () {
-  // }
-
   formatDatePartials (dateToFormat) {
     const date = moment(dateToFormat).format('Do MMM YYYY');
     return date;

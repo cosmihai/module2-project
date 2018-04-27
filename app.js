@@ -1,6 +1,8 @@
 'use strict';
 
 require('dotenv').config();
+
+// require npm packages
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -64,14 +66,11 @@ app.use('/users', usersRouter);
 app.use('/event', eventRouter);
 
 // -- 404 and error handler
-
-// NOTE: requires a views/not-found.ejs template
 app.use((req, res, next) => {
   res.status(404);
   res.render('pages/error/not-found');
 });
 
-// NOTE: requires a views/error.ejs template
 app.use((err, req, res, next) => {
   // always log the error
   console.error('ERROR', req.method, req.path, err);

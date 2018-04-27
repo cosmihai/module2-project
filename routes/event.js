@@ -25,7 +25,7 @@ router.post('/', (req, res, next) => {
   const longitude = req.body.longitude;
   const latitude = req.body.latitude;
 
-  // check if the form is not empty
+  // check if the form is empty
   if (name === '' || description === '' || date === '' || longitude === '' || latitude === '') {
     req.flash('create-error', 'You have to fill all the fields');
     res.redirect('/event/new');

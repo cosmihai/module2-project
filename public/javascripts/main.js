@@ -1,22 +1,6 @@
 'use strict';
 function main () {
-  // -- utility functions
-
-  // function getUserLocation (callback) {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition((position) => {
-  //       const userPosition = {
-  //         lat: position.coords.latitude,
-  //         lng: position.coords.longitude
-  //       };
-  //       callback(userPosition);
-  //     }, () => {
-  //       console.log('Error in the geolocation service.');
-  //     });
-  //   } else {
-  //     console.log('Browser does not support geolocation.');
-  //   }
-  // }
+  // utility function
   function addMarker (map, location, title) {
     const markerOptions = {
       position: location,

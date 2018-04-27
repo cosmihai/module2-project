@@ -8,7 +8,7 @@ const Utils = require('../utils');
 
 const utils = new Utils();
 
-/* GET home page. */
+// GET home page
 router.get('/', (req, res, next) => {
   Event.find()
     .then((result) => {

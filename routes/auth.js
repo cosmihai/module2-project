@@ -22,7 +22,7 @@ router.post('/login', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
 
-  // check if the form it's not empty
+  // check if the form it's empty
   if (username === '' || password === '') {
     req.flash('login-error', 'Indicate a username and a password to sign up');
     res.redirect('/auth/login');
@@ -59,7 +59,7 @@ router.post('/signup', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
 
-  // check if the form it's not empty
+  // check if the form it's empty
   if (username === '' || password === '') {
     req.flash('signup-error', 'Indicate a username and a password to sign up');
     res.redirect('/auth/signup');

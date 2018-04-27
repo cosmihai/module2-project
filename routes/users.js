@@ -10,7 +10,7 @@ const Utils = require('../utils');
 
 const utils = new Utils();
 
-/* GET user profile. */
+// GET user profile
 
 router.get('/:id', (req, res, next) => {
   if (!req.session.user) {
@@ -22,6 +22,7 @@ router.get('/:id', (req, res, next) => {
     next();
     return;
   }
+
   const promiseUser = User.findById(userId);
   const promiseEventCreated = Event.find({owner: userId});
   const promiseEventJoined = Event.find({attendants: {$in: [userId]}});
@@ -31,7 +32,6 @@ router.get('/:id', (req, res, next) => {
       const user = results[0];
       const eventsCreated = results[1];
       const eventsJoined = results[2];
-      // eventCreated.date = moment(eventCreated.date).format();
 
       const data = {user, eventsCreated, eventsJoined};
 
