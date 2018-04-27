@@ -89,6 +89,10 @@ h3{
   overflow: hidden;
 }
 
+.not-found, .error {
+  padding-top: 200px;
+}
+
 /* ---- components ---- */
 
 .navbar a {
