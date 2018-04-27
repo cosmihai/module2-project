@@ -16,7 +16,7 @@ router.get('/', (req, res, next) => {
         events: result
       };
       for (let i = 0; i < data.events.length; i++) {
-        data.events[i].formattedDate = utils.formatDate(result[i].date);
+        data.events[i].formattedDate = utils.formatDatePartials(result[i].date);
       }
       res.render('pages/homepage', data);
     })

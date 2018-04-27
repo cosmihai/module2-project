@@ -36,23 +36,15 @@ router.get('/:id', (req, res, next) => {
       const data = {user, eventsCreated, eventsJoined};
 
       for (let i = 0; i < data.eventsCreated.length; i++) {
-        data.eventsCreated[i].formattedDate = utils.formatDate(results[1][i].date);
+        data.eventsCreated[i].formattedDate = utils.formatDatePartials(results[1][i].date);
       }
 
       for (let i = 0; i < data.eventsJoined.length; i++) {
-        data.eventsJoined[i].formattedDate = utils.formatDate(results[1][i].date);
+        data.eventsJoined[i].formattedDate = utils.formatDatePartials(results[2][i].date);
       }
       res.render('pages/user/user', data);
     })
     .catch(next);
 });
-
-// router.get('/user/edit', (req, res, next) => {
-//   if (!req.session.user) {
-//     return req.redirect('/auth/login');
-//   }
-
-//   res.render('pages/user/edituser');
-// });
 
 module.exports = router;

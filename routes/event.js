@@ -86,7 +86,7 @@ router.get('/:id', (req, res, next) => {
         buttonPermission: userEqualsCreator,
         joinedEvent: joinedEvent
       };
-      data.event.formattedDate = utils.formatDate(result.date);
+      data.event.formattedDate = utils.formatDatePartials(result.date);
       res.render('pages/event/event-detail', data);
     })
     .catch(next);
@@ -183,6 +183,7 @@ router.get('/:id/update', (req, res, next) => {
       const data = {
         event: result
       };
+      data.event.formattedDate = utils.formatDateForms(result.date);
       res.render('pages/event/event-edit', data);
     })
     .catch(next);
@@ -204,7 +205,21 @@ router.post('/:id/update', (req, res, next) => {
   }
 
   Event.findById(eventId)
-    .then((result) => {
+    .then((event) => {
+      const location = {
+        type: 'Point',
+        coordinates: [req.body.longitude, req.body.latitude]
+      };
+      req.body.location = location;
+
+      event.name = req.body.name;
+      event.date = req.body.date;
+      event.description = req.body.description;
+      event.location = location;
+
+      return event.save();
+    })
+    .then(() => {
       res.redirect(`/users/${userId}`);
     })
     .catch(next);

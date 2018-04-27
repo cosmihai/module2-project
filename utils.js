@@ -5,8 +5,13 @@ class Utils {
   // constructor () {
   // }
 
-  formatDate (dateToFormat) {
-    const date = moment(dateToFormat).format('MMM Do YYYY');
+  formatDatePartials (dateToFormat) {
+    const date = moment(dateToFormat).format('Do MMM YYYY');
+    return date;
+  }
+
+  formatDateForms (dateToFormat) {
+    const date = moment(dateToFormat).format('YYYY-MM-DD');
     return date;
   }
 }
