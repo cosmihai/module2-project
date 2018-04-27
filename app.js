@@ -43,6 +43,7 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
+  app.locals.MAPS_KEY = process.env.MAPS_KEY;
   app.locals.user = req.session.user;
   next();
 });
